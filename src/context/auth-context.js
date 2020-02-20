@@ -16,7 +16,6 @@ function AuthProvider(props) {
     isRejected,
     isPending,
     isSettled,
-    reload,
   } = useAsync({
     promiseFn: bootstrapAppData,
   });

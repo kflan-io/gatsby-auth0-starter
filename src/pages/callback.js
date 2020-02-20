@@ -1,10 +1,15 @@
-import React from "react"
-import { handleAuthentication } from "../utils/auth"
+import React from "react";
+import { handleAuthentication } from "../utils/auth0";
+import { logout } from "../utils/auth0";
 
 const Callback = () => {
-  handleAuthentication()
+  handleAuthentication();
 
-  return <p>Loading...</p>
-}
+  return (
+    <>
+      <p>Loading...</p>
+    </>
+  );
+};
 
-export default Callback
+export default Callback;

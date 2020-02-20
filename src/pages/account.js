@@ -1,33 +1,33 @@
-import React from "react"
-import { Router } from "@reach/router"
-import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
-import { Link } from "gatsby"
+import React from "react";
+import { Router } from "@reach/router";
+import { login, logout, isAuthenticated, getProfile } from "../utils/auth0";
+import { Link } from "gatsby";
 
 const Home = ({ user }) => {
-  return <p>Hi, {user.name ? user.name : "friend"}!</p>
-}
-const Settings = () => <p>Settings</p>
-const Billing = () => <p>Billing</p>
+  return <p>Hi, {user.name ? user.name : "un-entered friend"}!</p>;
+};
+const Settings = () => <p>Settings</p>;
+const Billing = () => <p>Billing</p>;
 
 const Account = () => {
   if (!isAuthenticated()) {
-    login()
-    return <p>Redirecting to login...</p>
+    login();
+    return <p>Redirecting to login...</p>;
   }
 
-  const user = getProfile()
+  const user = getProfile();
 
   return (
     <>
       <nav>
-        <Link to="/account">Home</Link>{" "}
+        <Link to="/">Root</Link> <Link to="/account">Home</Link>{" "}
         <Link to="/account/settings">Settings</Link>{" "}
         <Link to="/account/billing">Billing</Link>{" "}
         <a
           href="#logout"
           onClick={e => {
-            logout()
-            e.preventDefault()
+            logout();
+            e.preventDefault();
           }}
         >
           Log Out
@@ -39,7 +39,7 @@ const Account = () => {
         <Billing path="/account/billing" />
       </Router>
     </>
-  )
-}
+  );
+};
 
-export default Account
+export default Account;
